@@ -37,10 +37,14 @@ use FacebookAds\Enum\AbstractEnum;
  */
 class ProductCatalogVerticalValues extends AbstractEnum {
 
+  const BOOKABLE = 'bookable';
   const COMMERCE = 'commerce';
   const DESTINATIONS = 'destinations';
   const FLIGHTS = 'flights';
   const HOME_LISTINGS = 'home_listings';
   const HOTELS = 'hotels';
+  const OFFLINE_COMMERCE = 'offline_commerce';
+  const TICKETED_EXPERIENCES = 'ticketed_experiences';
+  const TRANSACTABLE_ITEMS = 'transactable_items';
   const VEHICLES = 'vehicles';
 }

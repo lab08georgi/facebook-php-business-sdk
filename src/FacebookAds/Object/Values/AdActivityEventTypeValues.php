@@ -58,6 +58,7 @@ class AdActivityEventTypeValues extends AbstractEnum {
   const BILLING_EVENT = 'billing_event';
   const CAMPAIGN_ENDED = 'campaign_ended';
   const CAMPAIGN_SPENDING_LIMIT_REACHED = 'campaign_spending_limit_reached';
+  const CONVERSION_EVENT_UPDATED = 'conversion_event_updated';
   const CREATE_AD = 'create_ad';
   const CREATE_AD_SET = 'create_ad_set';
   const CREATE_AUDIENCE = 'create_audience';
@@ -107,4 +108,5 @@ class AdActivityEventTypeValues extends AbstractEnum {
   const UPDATE_CAMPAIGN_GROUP_SPEND_CAP = 'update_campaign_group_spend_cap';
   const UPDATE_CAMPAIGN_NAME = 'update_campaign_name';
   const UPDATE_CAMPAIGN_RUN_STATUS = 'update_campaign_run_status';
+  const UPDATE_CAMPAIGN_SCHEDULE = 'update_campaign_schedule';
 }

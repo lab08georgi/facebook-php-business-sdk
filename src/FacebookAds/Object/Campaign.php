@@ -46,8 +46,11 @@ use FacebookAds\Object\Values\CampaignEffectiveStatusValues;
 use FacebookAds\Object\Values\CampaignExecutionOptionsValues;
 use FacebookAds\Object\Values\CampaignObjectiveValues;
 use FacebookAds\Object\Values\CampaignOperatorValues;
+use FacebookAds\Object\Values\CampaignSpecialAdCategoryValues;
 use FacebookAds\Object\Values\CampaignStatusOptionValues;
 use FacebookAds\Object\Values\CampaignStatusValues;
+use FacebookAds\Object\Values\ContentDeliveryReportPlatformValues;
+use FacebookAds\Object\Values\ContentDeliveryReportPositionValues;
 use FacebookAds\Object\Traits\AdLabelAwareCrudObjectTrait;
 use FacebookAds\Object\Traits\ObjectValidation;
 
@@ -88,11 +91,35 @@ class Campaign extends AbstractArchivableCrudObject {
     $ref_enums['DatePreset'] = CampaignDatePresetValues::getInstance()->getValues();
     $ref_enums['ExecutionOptions'] = CampaignExecutionOptionsValues::getInstance()->getValues();
     $ref_enums['Objective'] = CampaignObjectiveValues::getInstance()->getValues();
+    $ref_enums['SpecialAdCategory'] = CampaignSpecialAdCategoryValues::getInstance()->getValues();
     $ref_enums['Operator'] = CampaignOperatorValues::getInstance()->getValues();
     $ref_enums['StatusOption'] = CampaignStatusOptionValues::getInstance()->getValues();
     return $ref_enums;
   }
 
+
+  public function getAdStudies(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/ad_studies',
+      new AdStudy(),
+      'EDGE',
+      AdStudy::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
 
   public function deleteAdLabels(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
@@ -225,6 +252,36 @@ class Campaign extends AbstractArchivableCrudObject {
       new AdSet(),
       'EDGE',
       AdSet::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function getContentDeliveryReport(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'end_date' => 'datetime',
+      'platform' => 'platform_enum',
+      'position' => 'position_enum',
+      'start_date' => 'datetime',
+      'summary' => 'bool',
+    );
+    $enums = array(
+      'platform_enum' => ContentDeliveryReportPlatformValues::getInstance()->getValues(),
+      'position_enum' => ContentDeliveryReportPositionValues::getInstance()->getValues(),
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/content_delivery_report',
+      new ContentDeliveryReport(),
+      'EDGE',
+      ContentDeliveryReport::getFieldsEnum()->getValues(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -478,6 +535,7 @@ class Campaign extends AbstractArchivableCrudObject {
       'objective' => 'objective_enum',
       'pacing_type' => 'list<string>',
       'promoted_object' => 'Object',
+      'special_ad_category' => 'special_ad_category_enum',
       'spend_cap' => 'unsigned int',
       'status' => 'status_enum',
       'upstream_events' => 'map',
@@ -486,6 +544,7 @@ class Campaign extends AbstractArchivableCrudObject {
       'bid_strategy_enum' => CampaignBidStrategyValues::getInstance()->getValues(),
       'execution_options_enum' => CampaignExecutionOptionsValues::getInstance()->getValues(),
       'objective_enum' => CampaignObjectiveValues::getInstance()->getValues(),
+      'special_ad_category_enum' => CampaignSpecialAdCategoryValues::getInstance()->getValues(),
       'status_enum' => CampaignStatusValues::getInstance()->getValues(),
     );
 

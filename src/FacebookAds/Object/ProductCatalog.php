@@ -42,6 +42,7 @@ use FacebookAds\Object\Values\ProductFeedFeedTypeValues;
 use FacebookAds\Object\Values\ProductFeedOverrideTypeValues;
 use FacebookAds\Object\Values\ProductFeedQuotedFieldsModeValues;
 use FacebookAds\Object\Values\ProductItemAvailabilityValues;
+use FacebookAds\Object\Values\ProductItemCommerceTaxCategoryValues;
 use FacebookAds\Object\Values\ProductItemConditionValues;
 use FacebookAds\Object\Values\ProductItemGenderValues;
 use FacebookAds\Object\Values\ProductItemVisibilityValues;
@@ -169,7 +170,6 @@ class ProductCatalog extends AbstractCrudObject {
     $this->assureId();
 
     $param_types = array(
-      'business' => 'string',
       'user' => 'int',
     );
     $enums = array(
@@ -218,7 +218,6 @@ class ProductCatalog extends AbstractCrudObject {
     $this->assureId();
 
     $param_types = array(
-      'business' => 'string',
       'tasks' => 'list<tasks_enum>',
       'user' => 'int',
     );
@@ -412,6 +411,29 @@ class ProductCatalog extends AbstractCrudObject {
       new CheckBatchRequestStatus(),
       'EDGE',
       CheckBatchRequestStatus::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function getCollaborativeAdsShareSettings(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/collaborative_ads_share_settings',
+      new CollaborativeAdsShareSettings(),
+      'EDGE',
+      CollaborativeAdsShareSettings::getFieldsEnum()->getValues(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -863,6 +885,7 @@ class ProductCatalog extends AbstractCrudObject {
       'rules' => 'list<string>',
       'schedule' => 'string',
       'update_schedule' => 'string',
+      'upload_schedule' => 'string',
     );
     $enums = array(
       'delimiter_enum' => ProductFeedDelimiterValues::getInstance()->getValues(),
@@ -1071,6 +1094,7 @@ class ProductCatalog extends AbstractCrudObject {
     $this->assureId();
 
     $param_types = array(
+      'additional_image_files' => 'list<file>',
       'additional_image_urls' => 'list<string>',
       'additional_variant_attributes' => 'map',
       'android_app_name' => 'string',
@@ -1082,6 +1106,7 @@ class ProductCatalog extends AbstractCrudObject {
       'category' => 'string',
       'checkout_url' => 'string',
       'color' => 'string',
+      'commerce_tax_category' => 'commerce_tax_category_enum',
       'condition' => 'condition_enum',
       'currency' => 'string',
       'custom_data' => 'map',
@@ -1105,6 +1130,7 @@ class ProductCatalog extends AbstractCrudObject {
       'iphone_app_name' => 'string',
       'iphone_app_store_id' => 'unsigned int',
       'iphone_url' => 'string',
+      'launch_date' => 'string',
       'manufacturer_part_number' => 'string',
       'material' => 'string',
       'mobile_link' => 'string',
@@ -1118,6 +1144,7 @@ class ProductCatalog extends AbstractCrudObject {
       'product_type' => 'string',
       'retailer_id' => 'string',
       'retailer_product_group_id' => 'string',
+      'return_policy_days' => 'unsigned int',
       'sale_price' => 'unsigned int',
       'sale_price_end_date' => 'datetime',
       'sale_price_start_date' => 'datetime',
@@ -1132,6 +1159,7 @@ class ProductCatalog extends AbstractCrudObject {
     );
     $enums = array(
       'availability_enum' => ProductItemAvailabilityValues::getInstance()->getValues(),
+      'commerce_tax_category_enum' => ProductItemCommerceTaxCategoryValues::getInstance()->getValues(),
       'condition_enum' => ProductItemConditionValues::getInstance()->getValues(),
       'gender_enum' => ProductItemGenderValues::getInstance()->getValues(),
       'visibility_enum' => ProductItemVisibilityValues::getInstance()->getValues(),
@@ -1145,6 +1173,56 @@ class ProductCatalog extends AbstractCrudObject {
       new ProductItem(),
       'EDGE',
       ProductItem::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function createStoreProductItemsBatch(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'allow_upsert' => 'bool',
+      'requests' => 'list<map>',
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_POST,
+      '/store_product_items_batch',
+      new ProductCatalog(),
+      'EDGE',
+      ProductCatalog::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function getVehicleOffers(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'bulk_pagination' => 'bool',
+      'filter' => 'Object',
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/vehicle_offers',
+      new VehicleOffer(),
+      'EDGE',
+      VehicleOffer::getFieldsEnum()->getValues(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -1194,6 +1272,7 @@ class ProductCatalog extends AbstractCrudObject {
       'description' => 'string',
       'drivetrain' => 'drivetrain_enum',
       'exterior_color' => 'string',
+      'fb_page_id' => 'string',
       'fuel_type' => 'fuel_type_enum',
       'images' => 'list<Object>',
       'interior_color' => 'string',
@@ -1293,6 +1372,7 @@ class ProductCatalog extends AbstractCrudObject {
       'fallback_image_url' => 'string',
       'flight_catalog_settings' => 'map',
       'name' => 'string',
+      'store_catalog_settings' => 'map',
     );
     $enums = array(
     );

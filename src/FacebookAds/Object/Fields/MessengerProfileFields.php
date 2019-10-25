@@ -41,6 +41,7 @@ class MessengerProfileFields extends AbstractEnum {
   const GET_STARTED = 'get_started';
   const GREETING = 'greeting';
   const HOME_URL = 'home_url';
+  const ICE_BREAKERS = 'ice_breakers';
   const PAYMENT_SETTINGS = 'payment_settings';
   const PERSISTENT_MENU = 'persistent_menu';
   const TARGET_AUDIENCE = 'target_audience';
@@ -52,6 +53,7 @@ class MessengerProfileFields extends AbstractEnum {
       'get_started' => 'Object',
       'greeting' => 'list<Object>',
       'home_url' => 'Object',
+      'ice_breakers' => 'list<Object>',
       'payment_settings' => 'Object',
       'persistent_menu' => 'list<Object>',
       'target_audience' => 'Object',

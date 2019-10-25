@@ -60,6 +60,7 @@ class WhatsAppBusinessAccount extends AbstractCrudObject {
     $this->assureId();
 
     $param_types = array(
+      'business' => 'string',
     );
     $enums = array(
     );
@@ -119,6 +120,7 @@ class WhatsAppBusinessAccount extends AbstractCrudObject {
       'status_enum' => array(
         'APPROVED',
         'DELETED',
+        'DISABLED',
         'PENDING',
         'PENDING_DELETION',
         'REJECTED',

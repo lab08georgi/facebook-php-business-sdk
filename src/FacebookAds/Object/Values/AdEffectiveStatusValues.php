@@ -43,6 +43,7 @@ class AdEffectiveStatusValues extends AbstractEnum {
   const CAMPAIGN_PAUSED = 'CAMPAIGN_PAUSED';
   const DELETED = 'DELETED';
   const DISAPPROVED = 'DISAPPROVED';
+  const IN_PROCESS = 'IN_PROCESS';
   const PAUSED = 'PAUSED';
   const PENDING_BILLING_INFO = 'PENDING_BILLING_INFO';
   const PENDING_REVIEW = 'PENDING_REVIEW';

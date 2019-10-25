@@ -48,10 +48,12 @@ class AdgroupPlacementSpecificReviewFeedbackFields extends AbstractEnum {
   const FACEBOOK = 'facebook';
   const INSTAGRAM = 'instagram';
   const INSTAGRAM_SHOP = 'instagram_shop';
+  const LEAD_GEN_HONEYPOT = 'lead_gen_honeypot';
   const MARKETPLACE = 'marketplace';
   const MARKETPLACE_HOME_RENTALS = 'marketplace_home_rentals';
   const MARKETPLACE_HOME_SALES = 'marketplace_home_sales';
   const MARKETPLACE_MOTORS = 'marketplace_motors';
+  const MARKETPLACE_SHOPS = 'marketplace_shops';
   const MAX_REVIEW_PLACEMENTS = 'max_review_placements';
   const PAGE_ADMIN = 'page_admin';
   const PRODUCT = 'product';
@@ -59,6 +61,7 @@ class AdgroupPlacementSpecificReviewFeedbackFields extends AbstractEnum {
   const PROFILE = 'profile';
   const SELLER = 'seller';
   const SHOPS = 'shops';
+  const TRAFFIC_QUALITY = 'traffic_quality';
   const WHATSAPP = 'whatsapp';
 
   public function getFieldTypes() {
@@ -74,10 +77,12 @@ class AdgroupPlacementSpecificReviewFeedbackFields extends AbstractEnum {
       'facebook' => 'map<string, string>',
       'instagram' => 'map<string, string>',
       'instagram_shop' => 'map<string, string>',
+      'lead_gen_honeypot' => 'map<string, string>',
       'marketplace' => 'map<string, string>',
       'marketplace_home_rentals' => 'map<string, string>',
       'marketplace_home_sales' => 'map<string, string>',
       'marketplace_motors' => 'map<string, string>',
+      'marketplace_shops' => 'map<string, string>',
       'max_review_placements' => 'map<string, string>',
       'page_admin' => 'map<string, string>',
       'product' => 'map<string, string>',
@@ -85,6 +90,7 @@ class AdgroupPlacementSpecificReviewFeedbackFields extends AbstractEnum {
       'profile' => 'map<string, string>',
       'seller' => 'map<string, string>',
       'shops' => 'map<string, string>',
+      'traffic_quality' => 'map<string, string>',
       'whatsapp' => 'map<string, string>',
     );
   }

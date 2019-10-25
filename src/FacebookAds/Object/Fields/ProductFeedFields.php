@@ -49,12 +49,12 @@ class ProductFeedFields extends AbstractEnum {
   const NAME = 'name';
   const OVERRIDE_TYPE = 'override_type';
   const PRODUCT_COUNT = 'product_count';
-  const QUALIFIED_PRODUCT_COUNT = 'qualified_product_count';
   const QUOTED_FIELDS_MODE = 'quoted_fields_mode';
   const SCHEDULE = 'schedule';
   const UPDATE_SCHEDULE = 'update_schedule';
   const FEED_TYPE = 'feed_type';
   const RULES = 'rules';
+  const UPLOAD_SCHEDULE = 'upload_schedule';
 
   public function getFieldTypes() {
     return array(
@@ -70,12 +70,12 @@ class ProductFeedFields extends AbstractEnum {
       'name' => 'string',
       'override_type' => 'string',
       'product_count' => 'int',
-      'qualified_product_count' => 'unsigned int',
       'quoted_fields_mode' => 'QuotedFieldsMode',
       'schedule' => 'ProductFeedSchedule',
       'update_schedule' => 'ProductFeedSchedule',
       'feed_type' => 'FeedType',
       'rules' => 'list<string>',
+      'upload_schedule' => 'string',
     );
   }
 }

@@ -60,6 +60,7 @@ class AdAccountFields extends AbstractEnum {
   const DISABLE_REASON = 'disable_reason';
   const END_ADVERTISER = 'end_advertiser';
   const END_ADVERTISER_NAME = 'end_advertiser_name';
+  const EXTENDED_CREDIT_INVOICE_GROUP = 'extended_credit_invoice_group';
   const FAILED_DELIVERY_CHECKS = 'failed_delivery_checks';
   const FB_ENTITY = 'fb_entity';
   const FUNDING_SOURCE = 'funding_source';
@@ -95,6 +96,7 @@ class AdAccountFields extends AbstractEnum {
   const TIMEZONE_OFFSET_HOURS_UTC = 'timezone_offset_hours_utc';
   const TOS_ACCEPTED = 'tos_accepted';
   const USER_ROLE = 'user_role';
+  const USER_TASKS = 'user_tasks';
   const USER_TOS_ACCEPTED = 'user_tos_accepted';
 
   public function getFieldTypes() {
@@ -122,6 +124,7 @@ class AdAccountFields extends AbstractEnum {
       'disable_reason' => 'unsigned int',
       'end_advertiser' => 'string',
       'end_advertiser_name' => 'string',
+      'extended_credit_invoice_group' => 'ExtendedCreditInvoiceGroup',
       'failed_delivery_checks' => 'list<DeliveryCheck>',
       'fb_entity' => 'unsigned int',
       'funding_source' => 'string',
@@ -157,6 +160,7 @@ class AdAccountFields extends AbstractEnum {
       'timezone_offset_hours_utc' => 'float',
       'tos_accepted' => 'map<string, int>',
       'user_role' => 'string',
+      'user_tasks' => 'list<string>',
       'user_tos_accepted' => 'map<string, int>',
     );
   }

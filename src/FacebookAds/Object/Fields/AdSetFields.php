@@ -38,12 +38,10 @@ use FacebookAds\Enum\AbstractEnum;
 class AdSetFields extends AbstractEnum {
 
   const ACCOUNT_ID = 'account_id';
-  const AD_KEYWORDS = 'ad_keywords';
   const ADLABELS = 'adlabels';
   const ADSET_SCHEDULE = 'adset_schedule';
   const ASSET_FEED_ID = 'asset_feed_id';
   const ATTRIBUTION_SPEC = 'attribution_spec';
-  const BEST_CREATIVE = 'best_creative';
   const BID_ADJUSTMENTS = 'bid_adjustments';
   const BID_AMOUNT = 'bid_amount';
   const BID_CONSTRAINTS = 'bid_constraints';
@@ -99,17 +97,16 @@ class AdSetFields extends AbstractEnum {
   const TIME_START = 'time_start';
   const TIME_STOP = 'time_stop';
   const TOPLINE_ID = 'topline_id';
+  const TUNE_FOR_CATEGORY = 'tune_for_category';
   const UPSTREAM_EVENTS = 'upstream_events';
 
   public function getFieldTypes() {
     return array(
       'account_id' => 'string',
-      'ad_keywords' => 'AdKeywords',
       'adlabels' => 'list<AdLabel>',
       'adset_schedule' => 'list<DayPart>',
       'asset_feed_id' => 'string',
       'attribution_spec' => 'list<AttributionSpec>',
-      'best_creative' => 'AdDynamicCreative',
       'bid_adjustments' => 'AdBidAdjustments',
       'bid_amount' => 'unsigned int',
       'bid_constraints' => 'AdCampaignBidConstraint',
@@ -165,6 +162,7 @@ class AdSetFields extends AbstractEnum {
       'time_start' => 'datetime',
       'time_stop' => 'datetime',
       'topline_id' => 'string',
+      'tune_for_category' => 'TuneForCategory',
       'upstream_events' => 'map',
     );
   }

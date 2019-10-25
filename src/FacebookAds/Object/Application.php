@@ -326,6 +326,29 @@ class Application extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
+  public function getAgencies(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/agencies',
+      new Business(),
+      'EDGE',
+      Business::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
   public function getAppEventTypes(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -398,6 +421,91 @@ class Application extends AbstractCrudObject {
       new Application(),
       'EDGE',
       Application::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function getAppInsights(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'aggregateBy' => 'aggregateBy_enum',
+      'breakdowns' => 'list<string>',
+      'ecosystem' => 'ecosystem_enum',
+      'event_name' => 'string',
+      'intervals_to_aggregate' => 'int',
+      'metric_key' => 'string',
+      'period' => 'period_enum',
+      'since' => 'datetime',
+      'until' => 'datetime',
+    );
+    $enums = array(
+      'aggregateBy_enum' => array(
+        'AVERAGE_JOURNEY_LENGTH',
+        'CONVERTED_JOURNEY_PERCENT',
+        'COUNT',
+        'COUNT_IDENTIFIED_USERS',
+        'COUNT_PER_USER',
+        'DAU',
+        'EVENT_LATEST_FIRE_TIME',
+        'EVENT_SOURCE_IDS',
+        'JOURNEY_CHANNEL_INCLUSION',
+        'JOURNEY_INCLUSION',
+        'MAU',
+        'MEDIAN_JOURNEY_LENGTH',
+        'MEDIAN_VALUE',
+        'MEDIAN_VALUE_PER_USER',
+        'OVERLAP',
+        'PERCENTILES_COUNT',
+        'PERCENTILES_USD_VALUE',
+        'PERCENTILES_VALUE',
+        'SCORE',
+        'SESSIONS_PER_JOURNEY',
+        'SESSION_BOUNCE_RATE',
+        'SUM',
+        'SUM_IDENTIFIED_USERS',
+        'SUM_PER_EVENT',
+        'TOPK',
+        'UNKNOWN_USERS',
+        'USD_SUM',
+        'USD_SUM_IDENTIFIED_USERS',
+        'USD_SUM_PER_EVENT',
+        'USD_SUM_PER_USER',
+        'USD_VALUE_PER_USER',
+        'USERS',
+        'USER_PROPERTY_USER_COUNT',
+        'VALUE_PER_USER',
+        'WAU',
+      ),
+      'ecosystem_enum' => array(
+        'GAME',
+        'NON_GAME',
+      ),
+      'period_enum' => array(
+        'daily',
+        'days_28',
+        'days_60',
+        'days_90',
+        'hourly',
+        'lifetime',
+        'mins_15',
+        'monthly',
+        'range',
+        'weekly',
+      ),
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/app_insights',
+      new AbstractCrudObject(),
+      'EDGE',
+      array(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -522,6 +630,30 @@ class Application extends AbstractCrudObject {
       new AdAccount(),
       'EDGE',
       AdAccount::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function deleteBanned(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'uids' => 'list<int>',
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_DELETE,
+      '/banned',
+      new AbstractCrudObject(),
+      'EDGE',
+      array(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -786,6 +918,82 @@ class Application extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
+  public function getInsightsPushSchedule(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/insights_push_schedule',
+      new AbstractCrudObject(),
+      'EDGE',
+      array(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function createInsightsPushSchedule(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'ad_account_ids' => 'list',
+      'breakdowns' => 'list<string>',
+      'date_preset' => 'string',
+      'level' => 'level_enum',
+      'metrics' => 'list<string>',
+      'object_id' => 'string',
+      'owner_id' => 'Object',
+      'schedule' => 'schedule_enum',
+      'status' => 'status_enum',
+      'time_increment' => 'unsigned int',
+      'time_start' => 'datetime',
+      'time_stop' => 'datetime',
+    );
+    $enums = array(
+      'level_enum' => array(
+        'ACCOUNT',
+        'AD',
+        'ADSET',
+        'CAMPAIGN',
+      ),
+      'schedule_enum' => array(
+        'DAILY',
+        'FINE_15_MIN',
+        'FINE_5_MIN',
+        'MONTHLY',
+        'WEEKLY',
+      ),
+      'status_enum' => array(
+        'ACTIVE',
+        'DISABLED',
+        'ERROR',
+      ),
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_POST,
+      '/insights_push_schedule',
+      new AbstractCrudObject(),
+      'EDGE',
+      array(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
   public function getIosDialogConfigs(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -985,10 +1193,11 @@ class Application extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function getMoodsForApplication(array $fields = array(), array $params = array(), $pending = false) {
+  public function getObjects(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
     $param_types = array(
+      'type' => 'Object',
     );
     $enums = array(
     );
@@ -997,10 +1206,10 @@ class Application extends AbstractCrudObject {
       $this->api,
       $this->data['id'],
       RequestInterface::METHOD_GET,
-      '/moods_for_application',
-      new AbstractCrudObject(),
+      '/objects',
+      new OpenGraphObject(),
       'EDGE',
-      array(),
+      OpenGraphObject::getFieldsEnum()->getValues(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -1048,34 +1257,6 @@ class Application extends AbstractCrudObject {
       $this->data['id'],
       RequestInterface::METHOD_POST,
       '/occludespopups',
-      new AbstractCrudObject(),
-      'EDGE',
-      array(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
-  public function createOzoneRelease(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'auto_push_to_prod' => 'bool',
-      'changelog' => 'string',
-      'channel_id' => 'unsigned int',
-      'release_name' => 'string',
-      'rollout_percentage' => 'float',
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_POST,
-      '/ozone_release',
       new AbstractCrudObject(),
       'EDGE',
       array(),
@@ -1269,30 +1450,6 @@ class Application extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function createStagingResource(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'file' => 'file',
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_POST,
-      '/staging_resources',
-      new Application(),
-      'EDGE',
-      Application::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
   public function getSubscribedDomains(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -1442,41 +1599,13 @@ class Application extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function createSubscriptionsSample(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'custom_fields' => 'string',
-      'field' => 'string',
-      'object' => 'string',
-      'object_id' => 'string',
-      'stress_run' => 'unsigned int',
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_POST,
-      '/subscriptions_sample',
-      new Application(),
-      'EDGE',
-      Application::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
   public function createUpload(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
     $param_types = array(
       'file_length' => 'unsigned int',
-      'file_name' => 'string',
-      'file_type' => 'string',
+      'file_name' => 'Object',
+      'file_type' => 'Object',
       'session_type' => 'session_type_enum',
     );
     $enums = array(

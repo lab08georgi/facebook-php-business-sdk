@@ -58,9 +58,14 @@ class UnifiedThread extends AbstractCrudObject {
     $this->assureId();
 
     $param_types = array(
+      'source' => 'source_enum',
       'user' => 'int',
     );
     $enums = array(
+      'source_enum' => array(
+        'ALL',
+        'USER',
+      ),
     );
 
     $request = new ApiRequest(
@@ -156,6 +161,7 @@ class UnifiedThread extends AbstractCrudObject {
         'no_border',
       ),
       'montage_supported_features_enum' => array(
+        'AUTHOR_IN_PRODUCER_QE_FOR_SMART_REPLIES',
         'LIGHTWEIGHT_REPLY',
         'SHOW_STORY_IN_MESSENGER_THREAD',
       ),

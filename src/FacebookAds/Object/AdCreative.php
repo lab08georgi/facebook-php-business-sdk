@@ -137,6 +137,29 @@ class AdCreative extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
+  public function getCreativeInsights(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/creative_insights',
+      new AdCreativeInsights(),
+      'EDGE',
+      AdCreativeInsights::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
   public function getPreviews(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -147,7 +170,6 @@ class AdCreative extends AbstractCrudObject {
       'dynamic_customization' => 'Object',
       'end_date' => 'datetime',
       'height' => 'unsigned int',
-      'interactive' => 'bool',
       'locale' => 'string',
       'place_page_id' => 'int',
       'post' => 'Object',

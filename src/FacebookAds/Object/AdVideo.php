@@ -38,6 +38,7 @@ use FacebookAds\Object\Values\AdVideoSwapModeValues;
 use FacebookAds\Object\Values\AdVideoTypeValues;
 use FacebookAds\Object\Values\AdVideoUnpublishedContentTypeValues;
 use FacebookAds\Object\Values\AdVideoUploadPhaseValues;
+use FacebookAds\Object\Values\AdVideoValidationAdPlacementsValues;
 use FacebookAds\Object\Values\AdVideoVideoPollWwwPlacementValues;
 use FacebookAds\Object\Values\CommentCommentPrivacyValueValues;
 use FacebookAds\Object\Values\CommentFilterValues;
@@ -83,37 +84,13 @@ class AdVideo extends AbstractCrudObject {
     $ref_enums['SwapMode'] = AdVideoSwapModeValues::getInstance()->getValues();
     $ref_enums['UnpublishedContentType'] = AdVideoUnpublishedContentTypeValues::getInstance()->getValues();
     $ref_enums['UploadPhase'] = AdVideoUploadPhaseValues::getInstance()->getValues();
+    $ref_enums['ValidationAdPlacements'] = AdVideoValidationAdPlacementsValues::getInstance()->getValues();
     $ref_enums['Type'] = AdVideoTypeValues::getInstance()->getValues();
     $ref_enums['BackdatedTimeGranularity'] = AdVideoBackdatedTimeGranularityValues::getInstance()->getValues();
     $ref_enums['VideoPollWwwPlacement'] = AdVideoVideoPollWwwPlacementValues::getInstance()->getValues();
     return $ref_enums;
   }
 
-
-  public function createAutoTrim(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'auto_trim_type' => 'string',
-      'target_id' => 'unsigned int',
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_POST,
-      '/auto_trims',
-      new AdVideo(),
-      'EDGE',
-      AdVideo::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
 
   public function getCaptions(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
@@ -454,12 +431,10 @@ class AdVideo extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function createSummarization(array $fields = array(), array $params = array(), $pending = false) {
+  public function getSponsorTags(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
     $param_types = array(
-      'summarization_type' => 'string',
-      'target_id' => 'unsigned int',
     );
     $enums = array(
     );
@@ -467,11 +442,34 @@ class AdVideo extends AbstractCrudObject {
     $request = new ApiRequest(
       $this->api,
       $this->data['id'],
-      RequestInterface::METHOD_POST,
-      '/summarizations',
-      new AdVideo(),
+      RequestInterface::METHOD_GET,
+      '/sponsor_tags',
+      new Page(),
       'EDGE',
-      AdVideo::getFieldsEnum()->getValues(),
+      Page::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function getTags(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/tags',
+      new TaggableSubject(),
+      'EDGE',
+      TaggableSubject::getFieldsEnum()->getValues(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);

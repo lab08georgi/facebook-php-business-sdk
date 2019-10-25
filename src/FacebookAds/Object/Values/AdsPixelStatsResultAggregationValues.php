@@ -47,10 +47,9 @@ class AdsPixelStatsResultAggregationValues extends AbstractEnum {
   const EVENT_SOURCE = 'event_source';
   const EVENT_TOTAL_COUNTS = 'event_total_counts';
   const EVENT_VALUE_COUNT = 'event_value_count';
+  const HAD_PII = 'had_pii';
   const HOST = 'host';
-  const PEOPLE_REACHED = 'people_reached';
-  const PII_KEYS = 'pii_keys';
-  const PII_LIFT = 'pii_lift';
+  const MATCH_KEYS = 'match_keys';
   const PIXEL_FIRE = 'pixel_fire';
   const URL = 'url';
   const URL_BY_RULE = 'url_by_rule';

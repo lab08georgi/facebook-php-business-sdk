@@ -73,6 +73,7 @@ class AdAccountTargetingUnifiedWhitelistedTypesValues extends AbstractEnum {
   const ETHNIC_AFFINITY = 'ethnic_affinity';
   const EXCLUDE_PREVIOUS_DAYS = 'exclude_previous_days';
   const EXCLUDE_REACHED_SINCE = 'exclude_reached_since';
+  const EXCLUDED_BRAND_SAFETY_CONTENT_TYPES = 'excluded_brand_safety_content_types';
   const EXCLUDED_CONNECTIONS = 'excluded_connections';
   const EXCLUDED_CUSTOM_AUDIENCES = 'excluded_custom_audiences';
   const EXCLUDED_DYNAMIC_AUDIENCE_IDS = 'excluded_dynamic_audience_ids';
@@ -101,6 +102,7 @@ class AdAccountTargetingUnifiedWhitelistedTypesValues extends AbstractEnum {
   const HOME_TYPE = 'home_type';
   const HOME_VALUE = 'home_value';
   const HOUSEHOLD_COMPOSITION = 'household_composition';
+  const ID = 'id';
   const INCOME = 'income';
   const INDUSTRIES = 'industries';
   const INSTAGRAM_POSITIONS = 'instagram_positions';
@@ -108,6 +110,7 @@ class AdAccountTargetingUnifiedWhitelistedTypesValues extends AbstractEnum {
   const INTEREST_DEFAULTS_SOURCE = 'interest_defaults_source';
   const INTERESTED_IN = 'interested_in';
   const INTERESTS = 'interests';
+  const IS_INSTAGRAM_DESTINATION_AD = 'is_instagram_destination_ad';
   const IS_WHATSAPP_DESTINATION_AD = 'is_whatsapp_destination_ad';
   const KEYWORDS = 'keywords';
   const LIFE_EVENTS = 'life_events';
@@ -128,7 +131,6 @@ class AdAccountTargetingUnifiedWhitelistedTypesValues extends AbstractEnum {
   const PRODUCT_AUDIENCE_SPECS = 'product_audience_specs';
   const PROSPECTING_AUDIENCE = 'prospecting_audience';
   const PUBLISHER_PLATFORMS = 'publisher_platforms';
-  const PUBLISHER_VISIBILITY_CATEGORIES = 'publisher_visibility_categories';
   const RADIUS = 'radius';
   const REGIONS = 'regions';
   const RELATIONSHIP_STATUSES = 'relationship_statuses';

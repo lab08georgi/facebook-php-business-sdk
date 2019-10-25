@@ -68,6 +68,7 @@ class TargetingFields extends AbstractEnum {
   const ENGAGEMENT_SPECS = 'engagement_specs';
   const ETHNIC_AFFINITY = 'ethnic_affinity';
   const EXCLUDE_REACHED_SINCE = 'exclude_reached_since';
+  const EXCLUDED_BRAND_SAFETY_CONTENT_TYPES = 'excluded_brand_safety_content_types';
   const EXCLUDED_CONNECTIONS = 'excluded_connections';
   const EXCLUDED_CUSTOM_AUDIENCES = 'excluded_custom_audiences';
   const EXCLUDED_DYNAMIC_AUDIENCE_IDS = 'excluded_dynamic_audience_ids';
@@ -94,7 +95,6 @@ class TargetingFields extends AbstractEnum {
   const INCOME = 'income';
   const INDUSTRIES = 'industries';
   const INSTAGRAM_POSITIONS = 'instagram_positions';
-  const INSTREAM_VIDEO_SPONSORSHIP_PLACEMENTS = 'instream_video_sponsorship_placements';
   const INTERESTED_IN = 'interested_in';
   const INTERESTS = 'interests';
   const IS_WHATSAPP_DESTINATION_AD = 'is_whatsapp_destination_ad';
@@ -111,7 +111,6 @@ class TargetingFields extends AbstractEnum {
   const PRODUCT_AUDIENCE_SPECS = 'product_audience_specs';
   const PROSPECTING_AUDIENCE = 'prospecting_audience';
   const PUBLISHER_PLATFORMS = 'publisher_platforms';
-  const PUBLISHER_VISIBILITY_CATEGORIES = 'publisher_visibility_categories';
   const RADIUS = 'radius';
   const REGIONS = 'regions';
   const RELATIONSHIP_STATUSES = 'relationship_statuses';
@@ -159,8 +158,9 @@ class TargetingFields extends AbstractEnum {
       'engagement_specs' => 'list<TargetingDynamicRule>',
       'ethnic_affinity' => 'list<IDName>',
       'exclude_reached_since' => 'list<string>',
+      'excluded_brand_safety_content_types' => 'list<string>',
       'excluded_connections' => 'list<IDName>',
-      'excluded_custom_audiences' => 'list<IDName>',
+      'excluded_custom_audiences' => 'list<RawCustomAudience>',
       'excluded_dynamic_audience_ids' => 'list<string>',
       'excluded_engagement_specs' => 'list<TargetingDynamicRule>',
       'excluded_geo_locations' => 'TargetingGeoLocation',
@@ -185,7 +185,6 @@ class TargetingFields extends AbstractEnum {
       'income' => 'list<IDName>',
       'industries' => 'list<IDName>',
       'instagram_positions' => 'list<string>',
-      'instream_video_sponsorship_placements' => 'list<string>',
       'interested_in' => 'list<unsigned int>',
       'interests' => 'list<IDName>',
       'is_whatsapp_destination_ad' => 'bool',
@@ -202,7 +201,6 @@ class TargetingFields extends AbstractEnum {
       'product_audience_specs' => 'list<TargetingProductAudienceSpec>',
       'prospecting_audience' => 'TargetingProspectingAudience',
       'publisher_platforms' => 'list<string>',
-      'publisher_visibility_categories' => 'list<string>',
       'radius' => 'string',
       'regions' => 'list<IDName>',
       'relationship_statuses' => 'list<unsigned int>',
