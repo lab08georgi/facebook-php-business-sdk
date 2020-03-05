@@ -95,9 +95,15 @@ class BusinessImage extends AbstractCrudObject {
     );
     $enums = array(
       'breakdowns_enum' => array(
+        'ad_id',
         'age',
         'country',
+        'device_platform',
         'gender',
+        'objective',
+        'optimization_goal',
+        'platform_position',
+        'publisher_platform',
       ),
     );
 

@@ -54,7 +54,6 @@ class ReachFrequencyPredictionFields extends AbstractEnum {
   const DAILY_IMPRESSION_CURVE = 'daily_impression_curve';
   const DAILY_IMPRESSION_CURVE_MAP = 'daily_impression_curve_map';
   const DAY_PARTING_SCHEDULE = 'day_parting_schedule';
-  const DEMO_BREAKDOWN = 'demo_breakdown';
   const DESTINATION_ID = 'destination_id';
   const END_TIME = 'end_time';
   const EXPIRATION_TIME = 'expiration_time';
@@ -67,10 +66,8 @@ class ReachFrequencyPredictionFields extends AbstractEnum {
   const EXTERNAL_MINIMUM_IMPRESSION = 'external_minimum_impression';
   const EXTERNAL_MINIMUM_REACH = 'external_minimum_reach';
   const EXTERNAL_REACH = 'external_reach';
-  const EXTERNAL_VALUES_BREAKDOWN = 'external_values_breakdown';
   const FEED_RATIO_0000 = 'feed_ratio_0000';
   const FREQUENCY_CAP = 'frequency_cap';
-  const FREQUENCY_DISTRIBUTION = 'frequency_distribution';
   const FREQUENCY_DISTRIBUTION_MAP = 'frequency_distribution_map';
   const FREQUENCY_DISTRIBUTION_MAP_AGG = 'frequency_distribution_map_agg';
   const GRP_AUDIENCE_SIZE = 'grp_audience_size';
@@ -158,7 +155,6 @@ class ReachFrequencyPredictionFields extends AbstractEnum {
       'daily_impression_curve' => 'list<float>',
       'daily_impression_curve_map' => 'map<unsigned int, list<float>>',
       'day_parting_schedule' => 'list<ReachFrequencyDayPart>',
-      'demo_breakdown' => 'ReachFrequencyEstimatesDemoBreakdown',
       'destination_id' => 'string',
       'end_time' => 'datetime',
       'expiration_time' => 'datetime',
@@ -171,10 +167,8 @@ class ReachFrequencyPredictionFields extends AbstractEnum {
       'external_minimum_impression' => 'unsigned int',
       'external_minimum_reach' => 'unsigned int',
       'external_reach' => 'unsigned int',
-      'external_values_breakdown' => 'string',
       'feed_ratio_0000' => 'unsigned int',
       'frequency_cap' => 'unsigned int',
-      'frequency_distribution' => 'list<float>',
       'frequency_distribution_map' => 'map<unsigned int, list<float>>',
       'frequency_distribution_map_agg' => 'map<unsigned int, list<unsigned int>>',
       'grp_audience_size' => 'float',

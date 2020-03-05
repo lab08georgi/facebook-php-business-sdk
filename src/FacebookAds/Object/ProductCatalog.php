@@ -270,6 +270,7 @@ class ProductCatalog extends AbstractCrudObject {
 
     $param_types = array(
       'allow_upsert' => 'bool',
+      'fbe_external_business_id' => 'string',
       'requests' => 'list<map>',
     );
     $enums = array(
@@ -881,11 +882,12 @@ class ProductCatalog extends AbstractCrudObject {
       'file_name' => 'string',
       'name' => 'string',
       'override_type' => 'override_type_enum',
+      'override_value' => 'string',
       'quoted_fields_mode' => 'quoted_fields_mode_enum',
       'rules' => 'list<string>',
       'schedule' => 'string',
       'update_schedule' => 'string',
-      'upload_schedule' => 'string',
+      'whitelisted_properties' => 'list<string>',
     );
     $enums = array(
       'delimiter_enum' => ProductFeedDelimiterValues::getInstance()->getValues(),

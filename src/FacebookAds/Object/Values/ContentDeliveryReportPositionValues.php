@@ -39,11 +39,12 @@ class ContentDeliveryReportPositionValues extends AbstractEnum {
 
   const ALL_PLACEMENTS = 'ALL_PLACEMENTS';
   const AN_CLASSIC = 'AN_CLASSIC';
-  const FACEBOOK_GROUPS = 'FACEBOOK_GROUPS';
+  const FACEBOOK_GROUPS_FEED = 'FACEBOOK_GROUPS_FEED';
   const FACEBOOK_STORIES = 'FACEBOOK_STORIES';
   const FEED = 'FEED';
   const GROUPS = 'GROUPS';
   const INSTAGRAM_EXPLORE = 'INSTAGRAM_EXPLORE';
+  const INSTAGRAM_IGTV = 'INSTAGRAM_IGTV';
   const INSTAGRAM_STORIES = 'INSTAGRAM_STORIES';
   const INSTANT_ARTICLE = 'INSTANT_ARTICLE';
   const INSTREAM_VIDEO = 'INSTREAM_VIDEO';
@@ -54,7 +55,6 @@ class ContentDeliveryReportPositionValues extends AbstractEnum {
   const REWARDED_VIDEO = 'REWARDED_VIDEO';
   const RIGHT_HAND_COLUMN = 'RIGHT_HAND_COLUMN';
   const SEARCH = 'SEARCH';
-  const SEARCH_SERP = 'SEARCH_SERP';
   const STATUS = 'STATUS';
   const SUGGESTED_VIDEO = 'SUGGESTED_VIDEO';
   const UNKNOWN = 'UNKNOWN';

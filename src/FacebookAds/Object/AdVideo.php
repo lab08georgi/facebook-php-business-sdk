@@ -45,7 +45,6 @@ use FacebookAds\Object\Values\CommentFilterValues;
 use FacebookAds\Object\Values\CommentLiveFilterValues;
 use FacebookAds\Object\Values\CommentOrderValues;
 use FacebookAds\Object\Values\InsightsResultPeriodValues;
-use FacebookAds\Object\Values\ProfileTypeValues;
 use FacebookAds\Object\Traits\CannotDelete;
 use FacebookAds\Object\Traits\CannotUpdate;
 use FacebookAds\Object\Traits\FieldValidation;
@@ -383,31 +382,6 @@ class AdVideo extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function getReactions(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'type' => 'type_enum',
-    );
-    $enums = array(
-      'type_enum' => ProfileTypeValues::getInstance()->getValues(),
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_GET,
-      '/reactions',
-      new Profile(),
-      'EDGE',
-      Profile::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
   public function getSharedPosts(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -467,9 +441,9 @@ class AdVideo extends AbstractCrudObject {
       $this->data['id'],
       RequestInterface::METHOD_GET,
       '/tags',
-      new TaggableSubject(),
+      new AbstractCrudObject(),
       'EDGE',
-      TaggableSubject::getFieldsEnum()->getValues(),
+      array(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);

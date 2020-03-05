@@ -99,7 +99,6 @@ class AdsInsightsFields extends AbstractEnum {
   const CONVERSION_RATE_RANKING = 'conversion_rate_ranking';
   const CONVERSION_VALUES = 'conversion_values';
   const CONVERSIONS = 'conversions';
-  const COST_PER_10_SEC_VIDEO_VIEW = 'cost_per_10_sec_video_view';
   const COST_PER_15_SEC_VIDEO_VIEW = 'cost_per_15_sec_video_view';
   const COST_PER_2_SEC_CONTINUOUS_VIDEO_VIEW = 'cost_per_2_sec_continuous_video_view';
   const COST_PER_ACTION_RESULT = 'cost_per_action_result';
@@ -123,6 +122,7 @@ class AdsInsightsFields extends AbstractEnum {
   const COST_PER_OUTBOUND_CLICK = 'cost_per_outbound_click';
   const COST_PER_SCHEDULE = 'cost_per_schedule';
   const COST_PER_START_TRIAL = 'cost_per_start_trial';
+  const COST_PER_STORE_VISIT_ACTION = 'cost_per_store_visit_action';
   const COST_PER_SUBMIT_APPLICATION = 'cost_per_submit_application';
   const COST_PER_SUBSCRIBE = 'cost_per_subscribe';
   const COST_PER_THRUPLAY = 'cost_per_thruplay';
@@ -211,12 +211,10 @@ class AdsInsightsFields extends AbstractEnum {
   const QUALITY_RANKING = 'quality_ranking';
   const QUALITY_SCORE_ECTR = 'quality_score_ectr';
   const QUALITY_SCORE_ECVR = 'quality_score_ecvr';
-  const QUALITY_SCORE_ENFBR = 'quality_score_enfbr';
   const QUALITY_SCORE_ORGANIC = 'quality_score_organic';
   const REACH = 'reach';
   const RECURRING_SUBSCRIPTION_PAYMENT_ACTIONS = 'recurring_subscription_payment_actions';
   const REGION = 'region';
-  const RELEVANCE_SCORE = 'relevance_score';
   const RULE_ASSET = 'rule_asset';
   const SCHEDULE_ACTIONS = 'schedule_actions';
   const SCHEDULE_VALUE = 'schedule_value';
@@ -224,6 +222,7 @@ class AdsInsightsFields extends AbstractEnum {
   const SPEND = 'spend';
   const START_TRIAL_ACTIONS = 'start_trial_actions';
   const START_TRIAL_VALUE = 'start_trial_value';
+  const STORE_VISIT_ACTIONS = 'store_visit_actions';
   const SUBMIT_APPLICATION_ACTIONS = 'submit_application_actions';
   const SUBMIT_APPLICATION_VALUE = 'submit_application_value';
   const SUBSCRIBE_ACTIONS = 'subscribe_actions';
@@ -245,10 +244,8 @@ class AdsInsightsFields extends AbstractEnum {
   const UNIQUE_OUTBOUND_CLICKS = 'unique_outbound_clicks';
   const UNIQUE_OUTBOUND_CLICKS_CTR = 'unique_outbound_clicks_ctr';
   const UNIQUE_VIDEO_CONTINUOUS_2_SEC_WATCHED_ACTIONS = 'unique_video_continuous_2_sec_watched_actions';
-  const UNIQUE_VIDEO_VIEW_10_SEC = 'unique_video_view_10_sec';
   const UNIQUE_VIDEO_VIEW_15_SEC = 'unique_video_view_15_sec';
   const UPDATED_TIME = 'updated_time';
-  const VIDEO_10_SEC_WATCHED_ACTIONS = 'video_10_sec_watched_actions';
   const VIDEO_15_SEC_WATCHED_ACTIONS = 'video_15_sec_watched_actions';
   const VIDEO_30_SEC_WATCHED_ACTIONS = 'video_30_sec_watched_actions';
   const VIDEO_ASSET = 'video_asset';
@@ -337,7 +334,6 @@ class AdsInsightsFields extends AbstractEnum {
       'conversion_rate_ranking' => 'string',
       'conversion_values' => 'list<AdsActionStats>',
       'conversions' => 'list<AdsActionStats>',
-      'cost_per_10_sec_video_view' => 'list<AdsActionStats>',
       'cost_per_15_sec_video_view' => 'list<AdsActionStats>',
       'cost_per_2_sec_continuous_video_view' => 'list<AdsActionStats>',
       'cost_per_action_result' => 'AdsActionStats',
@@ -361,6 +357,7 @@ class AdsInsightsFields extends AbstractEnum {
       'cost_per_outbound_click' => 'list<AdsActionStats>',
       'cost_per_schedule' => 'list<AdsActionStats>',
       'cost_per_start_trial' => 'list<AdsActionStats>',
+      'cost_per_store_visit_action' => 'list<AdsActionStats>',
       'cost_per_submit_application' => 'list<AdsActionStats>',
       'cost_per_subscribe' => 'list<AdsActionStats>',
       'cost_per_thruplay' => 'list<AdsActionStats>',
@@ -449,12 +446,10 @@ class AdsInsightsFields extends AbstractEnum {
       'quality_ranking' => 'string',
       'quality_score_ectr' => 'string',
       'quality_score_ecvr' => 'string',
-      'quality_score_enfbr' => 'string',
       'quality_score_organic' => 'string',
       'reach' => 'string',
       'recurring_subscription_payment_actions' => 'list<AdsActionStats>',
       'region' => 'string',
-      'relevance_score' => 'AdgroupRelevanceScore',
       'rule_asset' => 'Object',
       'schedule_actions' => 'list<AdsActionStats>',
       'schedule_value' => 'list<AdsActionStats>',
@@ -462,6 +457,7 @@ class AdsInsightsFields extends AbstractEnum {
       'spend' => 'string',
       'start_trial_actions' => 'list<AdsActionStats>',
       'start_trial_value' => 'list<AdsActionStats>',
+      'store_visit_actions' => 'list<AdsActionStats>',
       'submit_application_actions' => 'list<AdsActionStats>',
       'submit_application_value' => 'list<AdsActionStats>',
       'subscribe_actions' => 'list<AdsActionStats>',
@@ -483,10 +479,8 @@ class AdsInsightsFields extends AbstractEnum {
       'unique_outbound_clicks' => 'list<AdsActionStats>',
       'unique_outbound_clicks_ctr' => 'list<AdsActionStats>',
       'unique_video_continuous_2_sec_watched_actions' => 'list<AdsActionStats>',
-      'unique_video_view_10_sec' => 'list<AdsActionStats>',
       'unique_video_view_15_sec' => 'list<AdsActionStats>',
       'updated_time' => 'string',
-      'video_10_sec_watched_actions' => 'list<AdsActionStats>',
       'video_15_sec_watched_actions' => 'list<AdsActionStats>',
       'video_30_sec_watched_actions' => 'list<AdsActionStats>',
       'video_asset' => 'Object',

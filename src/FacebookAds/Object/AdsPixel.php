@@ -146,30 +146,6 @@ class AdsPixel extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function getAudiences(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'ad_account' => 'string',
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_GET,
-      '/audiences',
-      new CustomAudience(),
-      'EDGE',
-      CustomAudience::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
   public function getDaChecks(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -199,8 +175,13 @@ class AdsPixel extends AbstractCrudObject {
 
     $param_types = array(
       'data' => 'list<string>',
+      'namespace_id' => 'string',
+      'partner_agent' => 'string',
       'test_event_code' => 'string',
       'trace' => 'unsigned int',
+      'upload_id' => 'string',
+      'upload_source' => 'string',
+      'upload_tag' => 'string',
     );
     $enums = array(
     );
@@ -378,7 +359,7 @@ class AdsPixel extends AbstractCrudObject {
       'enable_automatic_matching' => 'bool',
       'first_party_cookie_status' => 'first_party_cookie_status_enum',
       'name' => 'string',
-      'server_events_business_id' => 'string',
+      'server_events_business_ids' => 'list<string>',
     );
     $enums = array(
       'automatic_matching_fields_enum' => AdsPixelAutomaticMatchingFieldsValues::getInstance()->getValues(),

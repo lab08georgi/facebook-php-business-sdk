@@ -60,9 +60,9 @@ class UserFields extends AbstractEnum {
   const INSTALLED = 'installed';
   const INTERESTED_IN = 'interested_in';
   const IS_FAMEDEEPLINKINGUSER = 'is_famedeeplinkinguser';
+  const IS_GUEST_USER = 'is_guest_user';
   const IS_SHARED_LOGIN = 'is_shared_login';
   const IS_VERIFIED = 'is_verified';
-  const LABELS = 'labels';
   const LANGUAGES = 'languages';
   const LAST_NAME = 'last_name';
   const LINK = 'link';
@@ -86,6 +86,7 @@ class UserFields extends AbstractEnum {
   const SHORT_NAME = 'short_name';
   const SIGNIFICANT_OTHER = 'significant_other';
   const SPORTS = 'sports';
+  const SUPPORTS_DONATE_BUTTON_IN_LIVE_VIDEO = 'supports_donate_button_in_live_video';
   const TEST_GROUP = 'test_group';
   const THIRD_PARTY_ID = 'third_party_id';
   const TIMEZONE = 'timezone';
@@ -122,9 +123,9 @@ class UserFields extends AbstractEnum {
       'installed' => 'bool',
       'interested_in' => 'list<string>',
       'is_famedeeplinkinguser' => 'bool',
+      'is_guest_user' => 'bool',
       'is_shared_login' => 'bool',
       'is_verified' => 'bool',
-      'labels' => 'list<PageLabel>',
       'languages' => 'list<Experience>',
       'last_name' => 'string',
       'link' => 'string',
@@ -148,6 +149,7 @@ class UserFields extends AbstractEnum {
       'short_name' => 'string',
       'significant_other' => 'User',
       'sports' => 'list<Experience>',
+      'supports_donate_button_in_live_video' => 'bool',
       'test_group' => 'unsigned int',
       'third_party_id' => 'string',
       'timezone' => 'float',
