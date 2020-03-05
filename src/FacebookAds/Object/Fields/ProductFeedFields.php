@@ -53,8 +53,9 @@ class ProductFeedFields extends AbstractEnum {
   const SCHEDULE = 'schedule';
   const UPDATE_SCHEDULE = 'update_schedule';
   const FEED_TYPE = 'feed_type';
+  const OVERRIDE_VALUE = 'override_value';
   const RULES = 'rules';
-  const UPLOAD_SCHEDULE = 'upload_schedule';
+  const WHITELISTED_PROPERTIES = 'whitelisted_properties';
 
   public function getFieldTypes() {
     return array(
@@ -74,8 +75,9 @@ class ProductFeedFields extends AbstractEnum {
       'schedule' => 'ProductFeedSchedule',
       'update_schedule' => 'ProductFeedSchedule',
       'feed_type' => 'FeedType',
+      'override_value' => 'string',
       'rules' => 'list<string>',
-      'upload_schedule' => 'string',
+      'whitelisted_properties' => 'list<string>',
     );
   }
 }

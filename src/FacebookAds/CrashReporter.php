@@ -27,6 +27,7 @@ namespace FacebookAds;
 use FacebookAds\Api;
 use FacebookAds\Exception\Exception;
 use FacebookAds\Http\RequestInterface;
+use FacebookAds\Http\Exception\RequestException;
 
 /**
  * Class CrashReasons
@@ -80,11 +81,8 @@ class CrashReporter {
      * @return void
      */
     public static function enable() {
-        if (!defined('STDOUT')) {
-          define('STDOUT', fopen('php://stdout', 'w'));
-        }
         if (!static::$handle) {
-          static::$handle = STDOUT;
+          static::$handle = fopen('php://stdout', 'w');
         }
         if (!static::$instance) {
             $api = Api::instance();
@@ -113,7 +111,9 @@ class CrashReporter {
      * @param $handle
      */
     public static function setLogger($handle) {
-        static::$handle = is_resource($handle) ? $handle : STDOUT;
+        if(is_resource($handle)) {
+          static::$handle  = $handle;
+        }
     }
 
     /**
@@ -172,8 +172,8 @@ class CrashReporter {
         if ($e instanceof RequestException) {
             $reason = CrashReasons::API;
         }
+        $reason .= ' : ' . $e->getMessage();
         $callstack = explode(PHP_EOL, $e->getTraceAsString());
-        array_splice($callstack, 0, 0, $e->getMessage());
         return array(
             'reason' => $reason,
             'callstack' => $callstack,

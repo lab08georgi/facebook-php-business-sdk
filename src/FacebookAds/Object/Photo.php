@@ -38,7 +38,6 @@ use FacebookAds\Object\Values\InsightsResultPeriodValues;
 use FacebookAds\Object\Values\PhotoBackdatedTimeGranularityValues;
 use FacebookAds\Object\Values\PhotoTypeValues;
 use FacebookAds\Object\Values\PhotoUnpublishedContentTypeValues;
-use FacebookAds\Object\Values\ProfileTypeValues;
 
 /**
  * This class is auto-generated.
@@ -214,31 +213,6 @@ class Photo extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function getReactions(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'type' => 'type_enum',
-    );
-    $enums = array(
-      'type_enum' => ProfileTypeValues::getInstance()->getValues(),
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_GET,
-      '/reactions',
-      new Profile(),
-      'EDGE',
-      Profile::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
   public function getSharedPosts(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -285,34 +259,10 @@ class Photo extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function getTags(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_GET,
-      '/tags',
-      new TaggableSubject(),
-      'EDGE',
-      TaggableSubject::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
   public function deleteSelf(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
     $param_types = array(
-      'pid' => 'string',
     );
     $enums = array(
     );

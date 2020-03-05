@@ -272,6 +272,53 @@ class ProductFeed extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
+  public function getUploadSchedules(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/upload_schedules',
+      new ProductFeedSchedule(),
+      'EDGE',
+      ProductFeedSchedule::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function createUploadSchedule(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+      'upload_schedule' => 'string',
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_POST,
+      '/upload_schedules',
+      new ProductFeed(),
+      'EDGE',
+      ProductFeed::getFieldsEnum()->getValues(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
   public function getUploads(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -299,6 +346,7 @@ class ProductFeed extends AbstractCrudObject {
     $this->assureId();
 
     $param_types = array(
+      'fbe_external_business_id' => 'string',
       'file' => 'file',
       'password' => 'string',
       'update_only' => 'bool',
@@ -431,7 +479,6 @@ class ProductFeed extends AbstractCrudObject {
       'quoted_fields_mode' => 'quoted_fields_mode_enum',
       'schedule' => 'string',
       'update_schedule' => 'string',
-      'upload_schedule' => 'string',
     );
     $enums = array(
       'delimiter_enum' => ProductFeedDelimiterValues::getInstance()->getValues(),

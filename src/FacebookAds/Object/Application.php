@@ -661,30 +661,6 @@ class Application extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function getBanned(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'uid' => 'int',
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_GET,
-      '/banned',
-      new User(),
-      'EDGE',
-      User::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
   public function getButtonAutoDetectionDeviceSelection(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -736,34 +712,6 @@ class Application extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function createCodelessEventBinding(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'bindings' => 'list<map>',
-      'mutation_method' => 'mutation_method_enum',
-      'platform' => 'platform_enum',
-    );
-    $enums = array(
-      'mutation_method_enum' => ApplicationMutationMethodValues::getInstance()->getValues(),
-      'platform_enum' => ApplicationPlatformValues::getInstance()->getValues(),
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_POST,
-      '/codeless_event_bindings',
-      new Application(),
-      'EDGE',
-      Application::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
   public function createCodelessEventMapping(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -787,31 +735,6 @@ class Application extends AbstractCrudObject {
       new Application(),
       'EDGE',
       Application::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
-  public function getCustomAudienceThirdPartyId(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'limit_event_usage' => 'bool',
-      'udid' => 'string',
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_GET,
-      '/custom_audience_third_party_id',
-      new AbstractCrudObject(),
-      'EDGE',
-      array(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -951,7 +874,7 @@ class Application extends AbstractCrudObject {
       'level' => 'level_enum',
       'metrics' => 'list<string>',
       'object_id' => 'string',
-      'owner_id' => 'Object',
+      'owner_id' => 'int',
       'schedule' => 'schedule_enum',
       'status' => 'status_enum',
       'time_increment' => 'unsigned int',
@@ -1193,48 +1116,32 @@ class Application extends AbstractCrudObject {
     return $pending ? $request : $request->execute();
   }
 
-  public function getObjects(array $fields = array(), array $params = array(), $pending = false) {
+  public function createMonetization(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
     $param_types = array(
-      'type' => 'Object',
+      'breakdowns' => 'list<breakdowns_enum>',
+      'campaign_id' => 'string',
+      'device_list' => 'list<string>',
+      'query_id' => 'string',
+      'request_id' => 'string',
+      'since' => 'datetime',
+      'until' => 'datetime',
     );
     $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_GET,
-      '/objects',
-      new OpenGraphObject(),
-      'EDGE',
-      OpenGraphObject::getFieldsEnum()->getValues(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
-  public function createObject(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'object' => 'Object',
-      'type' => 'string',
-    );
-    $enums = array(
+      'breakdowns_enum' => array(
+        'COUNTRY',
+      ),
     );
 
     $request = new ApiRequest(
       $this->api,
       $this->data['id'],
       RequestInterface::METHOD_POST,
-      '/objects',
-      new OpenGraphObject(),
+      '/monetization',
+      new AbstractCrudObject(),
       'EDGE',
-      OpenGraphObject::getFieldsEnum()->getValues(),
+      array(),
       new TypeChecker($param_types, $enums)
     );
     $request->addParams($params);
@@ -1257,6 +1164,29 @@ class Application extends AbstractCrudObject {
       $this->data['id'],
       RequestInterface::METHOD_POST,
       '/occludespopups',
+      new AbstractCrudObject(),
+      'EDGE',
+      array(),
+      new TypeChecker($param_types, $enums)
+    );
+    $request->addParams($params);
+    $request->addFields($fields);
+    return $pending ? $request : $request->execute();
+  }
+
+  public function getOzoneRelease(array $fields = array(), array $params = array(), $pending = false) {
+    $this->assureId();
+
+    $param_types = array(
+    );
+    $enums = array(
+    );
+
+    $request = new ApiRequest(
+      $this->api,
+      $this->data['id'],
+      RequestInterface::METHOD_GET,
+      '/ozone_release',
       new AbstractCrudObject(),
       'EDGE',
       array(),

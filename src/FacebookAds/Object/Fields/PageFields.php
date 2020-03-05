@@ -42,7 +42,6 @@ class PageFields extends AbstractEnum {
   const AD_CAMPAIGN = 'ad_campaign';
   const AFFILIATION = 'affiliation';
   const APP_ID = 'app_id';
-  const APP_LINKS = 'app_links';
   const ARTISTS_WE_LIKE = 'artists_we_like';
   const ATTIRE = 'attire';
   const AWARDS = 'awards';
@@ -107,9 +106,6 @@ class PageFields extends AbstractEnum {
   const IS_VERIFIED = 'is_verified';
   const IS_WEBHOOKS_SUBSCRIBED = 'is_webhooks_subscribed';
   const KEYWORDS = 'keywords';
-  const LEADGEN_FORM_PREVIEW_DETAILS = 'leadgen_form_preview_details';
-  const LEADGEN_HAS_CRM_INTEGRATION = 'leadgen_has_crm_integration';
-  const LEADGEN_HAS_FAT_PING_CRM_INTEGRATION = 'leadgen_has_fat_ping_crm_integration';
   const LEADGEN_TOS_ACCEPTANCE_TIME = 'leadgen_tos_acceptance_time';
   const LEADGEN_TOS_ACCEPTED = 'leadgen_tos_accepted';
   const LEADGEN_TOS_ACCEPTING_USER = 'leadgen_tos_accepting_user';
@@ -166,6 +162,7 @@ class PageFields extends AbstractEnum {
   const STORE_LOCATION_DESCRIPTOR = 'store_location_descriptor';
   const STORE_NUMBER = 'store_number';
   const STUDIO = 'studio';
+  const SUPPORTS_DONATE_BUTTON_IN_LIVE_VIDEO = 'supports_donate_button_in_live_video';
   const SUPPORTS_INSTANT_ARTICLES = 'supports_instant_articles';
   const TALKING_ABOUT_COUNT = 'talking_about_count';
   const UNREAD_MESSAGE_COUNT = 'unread_message_count';
@@ -186,7 +183,6 @@ class PageFields extends AbstractEnum {
       'ad_campaign' => 'AdSet',
       'affiliation' => 'string',
       'app_id' => 'string',
-      'app_links' => 'AppLinks',
       'artists_we_like' => 'string',
       'attire' => 'string',
       'awards' => 'string',
@@ -251,9 +247,6 @@ class PageFields extends AbstractEnum {
       'is_verified' => 'bool',
       'is_webhooks_subscribed' => 'bool',
       'keywords' => 'Object',
-      'leadgen_form_preview_details' => 'LeadGenFormPreviewDetails',
-      'leadgen_has_crm_integration' => 'bool',
-      'leadgen_has_fat_ping_crm_integration' => 'bool',
       'leadgen_tos_acceptance_time' => 'datetime',
       'leadgen_tos_accepted' => 'bool',
       'leadgen_tos_accepting_user' => 'User',
@@ -310,6 +303,7 @@ class PageFields extends AbstractEnum {
       'store_location_descriptor' => 'string',
       'store_number' => 'unsigned int',
       'studio' => 'string',
+      'supports_donate_button_in_live_video' => 'bool',
       'supports_instant_articles' => 'bool',
       'talking_about_count' => 'unsigned int',
       'unread_message_count' => 'unsigned int',

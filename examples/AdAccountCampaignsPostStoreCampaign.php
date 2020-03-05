@@ -39,7 +39,8 @@ $api->setLogger(new CurlLogger());
 $fields = array(
 );
 $params = array(
-  'name' => 'Store Visits Campaign',
+  'special_ad_category' => 'NONE',
+  'name' => 'Store Traffic Campaign',
   'objective' => 'STORE_VISITS',
   'promoted_object' => array('page_id' => '<pageID>'),
   'status' => 'PAUSED',
