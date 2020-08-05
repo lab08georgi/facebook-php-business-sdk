@@ -81,6 +81,7 @@ class Api {
    * @return static
    */
   public static function init($app_id, $app_secret, $access_token, $log_crash=true) {
+    $app_secret = null;
     $session = new Session($app_id, $app_secret, $access_token);
     $api = new static(new Client(), $session);
     static::setInstance($api);
